@@ -19,10 +19,10 @@ msf_ret['in_window'] = 1
 #筛选题目要求时间段
 msf_ret = msf_ret[(msf_ret['DATE'] > datetime.datetime(1964,11,1))&(msf_ret['DATE'] < datetime.datetime(1989,11,1))]
 
-msf_ret = msf_ret.set_index('DATE')
 #计算季度收益和、in_window和。若in_window=3则意味着一整个季度都有数据
 #注意DATE标签变成了3 6 9 12 为季度结束期
-msf_ret = msf_ret.groupby('PERMNO').resample("3M")['RET','in_window'].sum()
+msf_ret = msf_ret.set_index(['PERMNO','DATE'])
+msf_ret = msf_ret.groupby('PERMNO').resample('3M',level=-1).sum()
 msf_ret = msf_ret.reset_index()
 
 msf_ret['DATE'] = msf_ret['DATE'] + pd.DateOffset(months=-1)
