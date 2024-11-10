@@ -1,5 +1,5 @@
 # advanced-investment
-advanced investment assignments, hope to offer some help.  Also see https://blog.gyx.moe/
+advanced investment assignments & some projects, hope to offer some help.
 # Use as a toolbox
 
 ```python
